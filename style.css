@@ -61,17 +61,6 @@
   left: 0;
 }
 
-/* #game_foreground {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-image: url(assets/forground.svg);
-  background-size: cover;
-  pointer-events: none;
-} */
-
 #game_ui {
   width: 100%;
   height: 100%;
@@ -81,112 +70,109 @@
   pointer-events: none;
 }
 
-/* #score_board {
+#score_board {
   position: absolute;
-  bottom: 5%;
+  top: 4%;
   right: 5%;
-  aspect-ratio: 105/270;
-  width: 5%;
-  background-image: url(assets/catchup_flaske.svg);
+  aspect-ratio: 101/246;
+  width: 3%;
+  background-image: url(svg/poopAir1.svg);
   background-size: 100%;
   background-repeat: no-repeat;
-} */
+}
 
-/* #points {
-  font-family: "Pacifico", cursive;
+#points {
+  font-family: "Segoe Print", cursive;
   font-size: xx-large;
-  margin-top: 148%;
-  margin-left: 29%;
-} */
+  margin-left: -100%;
+  margin-top: 40%;
+}
 
-/* #life_board {
+#life_board {
   position: absolute;
-  bottom: 5%;
+  top: 5%;
   left: 5%;
-  aspect-ratio: 135/115;
+  aspect-ratio: 416/462;
   width: 5%;
-  background-image: url(assets/bad_tomat.svg);
+  background-image: url(svg/feather3.svg);
   background-size: 100%;
   background-repeat: no-repeat;
-} */
+}
 
-#liv {
-  font-family: "Pacifico", cursive;
+#lives {
+  font-family: "Segoe Print", cursive;
   font-size: xx-large;
   margin-left: 120%;
+  margin-top: 10%;
 }
-#good_container1 {
+#poop_container1 {
   position: absolute;
   top: -8%;
   left: 20%;
-  aspect-ratio: 135/115;
+  aspect-ratio: 101/246;
   width: 5%;
 }
 
-#good_sprite1 {
+#poop_sprite1 {
   width: 100%;
   height: 100%;
-  background-image: url(assets/god_tomat.svg);
+  background-image: url(svg/poopAir1.svg);
   background-size: cover;
 }
 
-#bad_container1 {
+#seed_container1 {
   position: absolute;
   top: -8%;
   left: 60%;
-  aspect-ratio: 135/115;
-  width: 5%;
+  aspect-ratio: 100/180;
+  width: 4%;
 }
 
-#bad_sprite1 {
+#seed_sprite1 {
   width: 100%;
   height: 100%;
-  background-image: url(assets/bad_tomat.svg);
+  background-image: url(svg/seed1.svg);
   background-size: cover;
 }
-.fald {
-  animation-name: fald_kf;
-  animation-duration: 3s;
+.fall {
+  animation-name: fall_kf;
+  animation-duration: 5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
-@keyframes fald_kf {
+@keyframes fall_kf {
   100% {
     translate: 0 1500%;
   }
 }
 
-.forsvind_good {
-  animation-name: forsvind_good_kf;
-  animation-duration: 0.6s;
+.disappear_good {
+  animation-name: disappear_good_kf;
+  animation-duration: 0.3s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
 }
-@keyframes forsvind_good_kf {
+@keyframes disappear_good_kf {
   100% {
-    rotate: 600deg;
     scale: 0;
   }
 }
 
-.forsvind_bad {
-  animation-name: forsvind_bad_kf;
+.disappear_bad {
+  animation-name: disappear_bad_kf;
   animation-duration: 0.6s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
 }
-@keyframes forsvind_bad_kf {
+@keyframes disappear_bad_kf {
   20% {
-    scale: 1.5;
-  }
-  30% {
-    scale: 1;
+    scale: 0.8;
   }
   100% {
-    scale: 0;
+    scale: 1.2;
   }
 }
 
-.frys {
+.freeze {
   animation-play-state: paused;
 }
