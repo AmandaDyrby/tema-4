@@ -1,0 +1,197 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  padding-left: 1rem;
+  font-size: 1.2rem;
+}
+
+nav a:active,
+nav a:visited,
+nav a:link {
+  color: green;
+}
+
+nav a:hover {
+  color: mediumvioletred;
+}
+
+nav {
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 1rem 0 0;
+}
+
+nav a {
+  font-size: 1.5rem;
+  font-family: "Russo One", sans-serif;
+  padding: 0 0.4rem 0 0.4rem;
+  border-right: 0.2rem solid green;
+}
+
+nav a:last-child {
+  border-right: none;
+}
+
+#screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+#game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#game_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: aqua;
+}
+
+#game_elements {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#blue_container {
+  position: absolute;
+  top: 45%;
+  left: 35%;
+  width: 10%;
+  aspect-ratio: 1/1;
+}
+
+#blue_sprite {
+  width: 100%;
+  height: 100%;
+  background-image: url(smile_blue.svg);
+  background-size: 100%;
+}
+
+#red_container {
+  position: absolute;
+  top: 45%;
+  left: 65%;
+  width: 10%;
+  aspect-ratio: 1/1;
+}
+
+#red_sprite {
+  width: 100%;
+  height: 100%;
+  background-image: url(smile_red.svg);
+  background-size: 100%;
+}
+
+.forsvind {
+  animation-name: forsvind_kf;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+@keyframes forsvind_kf {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.drej {
+  animation-name: drej_kf;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+@keyframes drej_kf {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.frys {
+  animation-play-state: paused;
+}
+
+.flyv {
+  animation-name: flyv_kf;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+@keyframes flyv_kf {
+  0% {
+    transform: translateX(-975%);
+  }
+
+  100% {
+    transform: translateX(365%);
+  }
+}
+
+.fald {
+  animation-name: fald_kf;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+@keyframes fald_kf {
+  0% {
+  }
+
+  100% {
+    transform: translateY(121.25%);
+  }
+}
+
+.hop {
+  animation-name: hop_kf;
+  animation-duration: 0.5s;
+  animation-iteration-count: 2;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
+
+@keyframes hop_kf {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
