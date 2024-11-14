@@ -18,6 +18,7 @@ function showPage() {
 function startGame() {
   console.log("startGame");
   // skjul andre skærme
+
   points = 0;
   document.querySelector("#points").innerHTML = points;
   lives = 3;
@@ -26,25 +27,20 @@ function startGame() {
   //start timer animation
 
   poop1.classList.add("pos" + rng(9), "fallGood");
+  poop1.addEventListener("animationiteration", poopClickReset);
+  poop1.addEventListener("mousedown", clickPoop);
+  poop1.addEventListener("animationiteration", poopFallReset);
+  //poop random delay
+
   seed1.classList.add("pos" + rng(9), "fallBad");
+  seed1.addEventListener("animationiteration", seedReset);
+  seed1.addEventListener("mousedown", clickSeed);
+  //seed random delay
 
   //feather random position
   //feather fall
-
-  document
-    .querySelector("#poop_container1")
-    .addEventListener("animationiteration", poopClickReset);
-  document
-    .querySelector("#poop_container1")
-    .addEventListener("mousedown", clickPoop);
-
-  seed1.addEventListener("animationiteration", seedReset);
-  seed1.addEventListener("mousedown", clickSeed);
   //feather clickable
-
-  document
-    .querySelector("#poop_container1")
-    .addEventListener("animationiteration", poopFallReset);
+  //feather random delay
 }
 
 function clickPoop() {
@@ -118,7 +114,7 @@ function seedReset() {
 //   if (lives < 3) {
 //     lives++;
 //   }
-//   document.querySelector("#life_board").innerHTML = lives;
+//   document.querySelector("#lives").innerHTML = lives;
 //   // play sound
 //   // start featherDisappear animation
 // }
