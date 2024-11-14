@@ -25,8 +25,8 @@ function startGame() {
 
   //start timer animation
 
-  poop1.classList.add("pos" + rng(9), "fall");
-  seed1.classList.add("pos" + rng(9), "fall");
+  poop1.classList.add("pos" + rng(9), "fallGood");
+  seed1.classList.add("pos" + rng(9), "fallBad");
 
   //feather random position
   //feather fall
@@ -71,7 +71,7 @@ function poopClickReset() {
 
   poop1.classList = "";
   poop1.offsetLeft;
-  poop1.classList.add("pos" + rng(9), "fall");
+  poop1.classList.add("pos" + rng(9), "fallGood");
   document
     .querySelector("#poop_container1")
     .addEventListener("mousedown", clickPoop);
@@ -105,7 +105,7 @@ function seedReset() {
 
   seed1.classList = "";
   seed1.offsetLeft;
-  seed1.classList.add("pos" + rng(9), "fall");
+  seed1.classList.add("pos" + rng(9), "fallBad");
   document
     .querySelector("#seed_container1")
     .addEventListener("mousedown", clickSeed);
