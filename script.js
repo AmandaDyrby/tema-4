@@ -2,19 +2,22 @@ window.addEventListener("load", showPage);
 
 let points;
 let lives;
+function rng(max) {
+  return Math.floor(Math.random() * max) + 1;
+}
+
+const poop1 = document.querySelector("#poop_container1");
+const seed1 = document.querySelector("#seed_container1");
 
 function showPage() {
   console.log("show page");
   // skjul andre skærme
-  // vis start skærm
   startGame();
 }
 
-//if player clicks play button
 function startGame() {
   console.log("startGame");
   // skjul andre skærme
-  // vis game skærm
   points = 0;
   document.querySelector("#points").innerHTML = points;
   lives = 3;
@@ -22,21 +25,26 @@ function startGame() {
 
   //start timer animation
 
-  //poop random position + random delay
-  //seed random position + random delay
-  //feather random position + random delay
+  poop1.classList.add("pos" + rng(9), "fall");
+  seed1.classList.add("pos" + rng(9), "fall");
 
-  document.querySelector("#poop_container1").classList.add("fall");
-  document.querySelector("#seed_container1").classList.add("fall");
+  //feather random position
   //feather fall
 
   document
     .querySelector("#poop_container1")
-    .addEventListener("mousedown", clickPoop);
+    .addEventListener("animationiteration", poopClickReset);
   document
-    .querySelector("#seed_container1")
-    .addEventListener("mousedown", clickSeed);
+    .querySelector("#poop_container1")
+    .addEventListener("mousedown", clickPoop);
+
+  seed1.addEventListener("animationiteration", seedReset);
+  seed1.addEventListener("mousedown", clickSeed);
   //feather clickable
+
+  document
+    .querySelector("#poop_container1")
+    .addEventListener("animationiteration", poopFallReset);
 }
 
 function clickPoop() {
@@ -47,7 +55,7 @@ function clickPoop() {
 
   points++;
   document.querySelector("#points").innerHTML = points;
-  document.querySelector("#poop_container1").classList.add("freeze");
+  poop1.classList.add("freeze");
   document.querySelector("#poop_sprite1").classList.add("disappear_good");
   // play sound
 
@@ -58,37 +66,30 @@ function clickPoop() {
 
 function poopClickReset() {
   console.log("clickPoopReset");
-  document.querySelector("#poop_container1").classList.remove("freeze");
+  poop1.classList.remove("freeze");
   document.querySelector("#poop_sprite1").classList.remove("disappear_good");
 
-  document.querySelector("#poop_container1").classList.remove("fall");
-  document.querySelector("#poop_container1").offsetLeft;
-  document.querySelector("#poop_container1").classList.add("fall");
+  poop1.classList = "";
+  poop1.offsetLeft;
+  poop1.classList.add("pos" + rng(9), "fall");
   document
     .querySelector("#poop_container1")
     .addEventListener("mousedown", clickPoop);
-
-  //new random position
 }
 
-//if poop animation ends
 function poopFallReset() {
   lives--;
   document.querySelector("#lives").innerHTML = lives;
-  //show element again
-  //new random position
-  document.querySelector("#poop_container1").classList.add("fall");
+  //play sound
 }
 
 function clickSeed() {
   console.log("clickSeed");
-  document
-    .querySelector("#seed_container1")
-    .removeEventListener("mousedown", clickSeed);
+  seed1.removeEventListener("mousedown", clickSeed);
 
   points--;
-  document.querySelector("#score_board").innerHTML = points;
-  document.querySelector("#seed_container1").classList.add("freeze");
+  document.querySelector("#points").innerHTML = points;
+  seed1.classList.add("freeze");
   document.querySelector("#seed_sprite1").classList.add("disappear_bad");
   //play sound
 
@@ -99,20 +100,17 @@ function clickSeed() {
 
 function seedReset() {
   console.log("seedReset");
-  document.querySelector("#seed_container1").classList.remove("freeze");
+  seed1.classList.remove("freeze");
   document.querySelector("#seed_sprite1").classList.remove("disappear_bad");
 
-  document.querySelector("#seed_container1").classList.remove("fall");
-  document.querySelector("#seed_container1").offsetLeft;
-  document.querySelector("#seed_container1").classList.add("fall");
+  seed1.classList = "";
+  seed1.offsetLeft;
+  seed1.classList.add("pos" + rng(9), "fall");
   document
     .querySelector("#seed_container1")
-    .addEventListener("mousedown", clickPoop);
-
-  //new random position
+    .addEventListener("mousedown", clickSeed);
 }
 
-// //if player clicks feather
 // function clickFeather() {
 //   document
 //     .querySelector("selector")
@@ -125,8 +123,7 @@ function seedReset() {
 //   // start featherDisappear animation
 // }
 
-// //if featherDisappear animation done
-// function featherClickReset() {
+// function featherReset() {
 //   //show element again
 //   //new random position
 //   //restart fall animation
