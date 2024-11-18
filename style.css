@@ -8,6 +8,8 @@
   width: 100%;
   aspect-ratio: 16/9;
   position: relative;
+  overflow: hidden;
+  container-type: inline-size;
 }
 
 #footer {
@@ -116,6 +118,7 @@
   top: -8%;
   aspect-ratio: 101/246;
   width: 5%;
+  top: -25%;
 }
 
 #poop_sprite1 {
@@ -130,6 +133,7 @@
   top: -8%;
   aspect-ratio: 100/180;
   width: 4%;
+  top: -15%;
 }
 
 #seed_sprite1 {
@@ -227,4 +231,60 @@
 
 .pos9 {
   left: 90%;
+}
+
+.delay1 {
+  animation-delay: 0s;
+}
+
+.delay2 {
+  animation-delay: 0.3s;
+}
+
+.delay3 {
+  animation-delay: 0.6s;
+}
+
+.delay4 {
+  animation-delay: 0.9s;
+}
+
+#time_container {
+  position: absolute;
+  width: 30%;
+  height: 4%;
+  top: 8%;
+  left: 35%;
+}
+
+#time_sprite {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+  background-color: rgb(152, 170, 109);
+}
+
+.time {
+  animation-name: time_kf;
+  animation-duration: 20s;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes time_kf {
+  0% {
+    transform: scaleX(1);
+    background-color: rgb(152, 170, 109);
+  }
+
+  50% {
+    transform: scaleX(0.5);
+    background-color: rgb(240, 211, 93);
+  }
+
+  100% {
+    transform: scaleX(0);
+    background-color: rgb(209, 116, 93);
+  }
 }

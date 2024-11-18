@@ -17,29 +17,33 @@ function showPage() {
 
 function startGame() {
   console.log("startGame");
-  // skjul andre skærme
 
+  //reset points and lives
   points = 0;
   document.querySelector("#points").innerHTML = points;
   lives = 3;
   document.querySelector("#lives").innerHTML = lives;
 
   //start timer animation
+  document.querySelector("#time_sprite").classList.add("time");
+  document
+    .querySelector("#time_container")
+    .addEventListener("animationend", stopGame);
 
-  poop1.classList.add("pos" + rng(9), "fallGood");
+  //initialize poop1
+  poop1.classList.add("pos" + rng(9), "fallGood", "delay" + rng(4));
   poop1.addEventListener("animationiteration", poopClickReset);
   poop1.addEventListener("mousedown", clickPoop);
   poop1.addEventListener("animationiteration", poopFallReset);
   //poop random delay
 
-  seed1.classList.add("pos" + rng(9), "fallBad");
+  //initialze seed1
+  seed1.classList.add("pos" + rng(9), "fallBad", "delay" + rng(4));
   seed1.addEventListener("animationiteration", seedReset);
   seed1.addEventListener("mousedown", clickSeed);
   //seed random delay
 
-  //feather random position
-  //feather fall
-  //feather clickable
+  //initialize feather1
   //feather random delay
 }
 
@@ -61,7 +65,7 @@ function clickPoop() {
 }
 
 function poopClickReset() {
-  console.log("clickPoopReset");
+  //console.log("clickPoopReset");
   poop1.classList.remove("freeze");
   document.querySelector("#poop_sprite1").classList.remove("disappear_good");
 
@@ -77,6 +81,9 @@ function poopFallReset() {
   lives--;
   document.querySelector("#lives").innerHTML = lives;
   //play sound
+  if (lives < 1) {
+    stopGame();
+  }
 }
 
 function clickSeed() {
@@ -95,7 +102,7 @@ function clickSeed() {
 }
 
 function seedReset() {
-  console.log("seedReset");
+  //console.log("seedReset");
   seed1.classList.remove("freeze");
   document.querySelector("#seed_sprite1").classList.remove("disappear_bad");
 
@@ -125,18 +132,44 @@ function seedReset() {
 //   //restart fall animation
 // }
 
-//if lives=0 // if timer animation done
 function stopGame() {
-  //remove all animations
-  //remove all listeners
+  console.log("stopGame");
+
+  //Stop timer
+  document.querySelector("#time_sprite").classList.remove("time");
+  document
+    .querySelector("#time_container")
+    .removeEventListener("animationend", stopGame);
+
+  poop1.classList = "";
+  poop1.firstElementChild.classList = "";
+
+  poop1.removeEventListener("mousedown", clickPoop);
+  poop1.removeEventListener("animationiteration", poopClickReset);
+  poop1.removeEventListener("animationend", poopClickReset);
+
+  seed1.classList = "";
+  seed1.firstElementChild.classList = "";
+
+  seed1.removeEventListener("mousedown", clickSeed);
+  seed1.removeEventListener("animationiteration", seedReset);
+  seed1.removeEventListener("animationend", seedReset);
+
+  if (lives <= 0) {
+    gameOver();
+  } else if (points >= 10) {
+    levelComplete();
+  } else {
+    gameOver();
+  }
 }
 
-//if stopGame && (if lives = 0 // points<30)
 function gameOver() {
+  console.log("u suck!");
   //show gameover screen
 }
 
-//if stopGame && points>29
 function levelComplete() {
+  console.log("victory!");
   //show victory screen
 }

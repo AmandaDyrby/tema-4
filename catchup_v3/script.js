@@ -10,6 +10,10 @@ const bad1 = document.querySelector("#bad_container1");
 function sidenVises() {
   console.log("sidenVises");
 
+  startSpillet();
+}
+
+function startSpillet() {
   //Nulstil point og udskriv
   points = 0;
   document.querySelector("#points").textContent = points.toString().padStart(2, "0");
@@ -149,6 +153,7 @@ function gameover() {
 function levelComplete() {
   console.log("levelComplete");
 }
+
 function nytRand(max) {
   return Math.floor(Math.random() * max) + 1;
 }
