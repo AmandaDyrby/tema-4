@@ -133,7 +133,6 @@ function seedReset() {
 // }
 
 function stopGame() {
-  //git note: timer already done ;p
   console.log("stopGame");
 
   //Stop timer
