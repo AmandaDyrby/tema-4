@@ -115,10 +115,9 @@
 }
 #poop_container1 {
   position: absolute;
-  top: -8%;
+  top: -33%;
   aspect-ratio: 101/246;
   width: 5%;
-  top: -25%;
 }
 
 #poop_sprite1 {
@@ -128,12 +127,25 @@
   background-size: cover;
 }
 
+#poop_container2 {
+  position: absolute;
+  top: -33%;
+  aspect-ratio: 111/386;
+  width: 5%;
+}
+
+#poop_sprite2 {
+  width: 100%;
+  height: 100%;
+  background-image: url(svg/poopAir2.svg);
+  background-size: cover;
+}
+
 #seed_container1 {
   position: absolute;
-  top: -8%;
+  top: -23%;
   aspect-ratio: 100/180;
   width: 4%;
-  top: -15%;
 }
 
 #seed_sprite1 {
@@ -142,6 +154,21 @@
   background-image: url(svg/seed1.svg);
   background-size: cover;
 }
+
+#seed_container2 {
+  position: absolute;
+  top: -23%;
+  aspect-ratio: 94/183;
+  width: 4%;
+}
+
+#seed_sprite2 {
+  width: 100%;
+  height: 100%;
+  background-image: url(svg/seed2.svg);
+  background-size: cover;
+}
+
 .fallGood {
   animation-name: fallGood_kf;
   animation-duration: 3s;
