@@ -69,7 +69,7 @@ function clickPoop() {
   // play sound
 
   //poop disappear animation
-  poop1.classList.add("freeze");
+  this.classList.add("freeze");
   this.firstElementChild.classList.add("disappear_good");
 
   //reset poop after animation end
