@@ -8,16 +8,30 @@ function rng(max) {
 
 const poop1 = document.querySelector("#poop_container1");
 const poop2 = document.querySelector("#poop_container2");
+
 const seed1 = document.querySelector("#seed_container1");
 const seed2 = document.querySelector("#seed_container2");
 
+const startScreen = document.querySelector("#start");
+const gameOverScreen = document.querySelector("#game_over");
+const victoryScreen = document.querySelector("#level_complete");
+
 function showPage() {
   console.log("show page");
-  startGame();
+
+  //hide other screens
+  victoryScreen.classList.add("hide");
+  gameOverScreen.classList.add("hide");
+
+  //show start screen
+  startScreen.addEventListener("mousedown", startGame);
 }
 
 function startGame() {
   console.log("startGame");
+  startScreen.classList.add("hide");
+  gameOverScreen.classList.add("hide");
+  victoryScreen.classList.add("hide");
 
   //reset points and lives
   points = 0;
@@ -59,7 +73,7 @@ function startGame() {
 }
 
 function clickPoop() {
-  console.log("clickPoop", this);
+  console.log("clickPoop");
 
   this.removeEventListener("mousedown", clickPoop);
 
@@ -77,7 +91,7 @@ function clickPoop() {
 }
 
 function poopClickReset() {
-  console.log("clickPoopReset", this);
+  console.log("clickPoopReset");
 
   this.classList.remove("freeze");
   this.firstElementChild.classList.remove("disappear_good");
@@ -188,10 +202,16 @@ function stopGame() {
 
 function gameOver() {
   console.log("u suck!");
-  //show gameover screen
+
+  //show game over screen
+  gameOverScreen.classList.remove("hide");
+  gameOverScreen.addEventListener("mousedown", startGame);
 }
 
 function levelComplete() {
   console.log("victory!");
+
   //show victory screen
+  victoryScreen.classList.remove("hide");
+  victoryScreen.addEventListener("mousedown", startGame);
 }

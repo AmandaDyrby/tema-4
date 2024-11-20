@@ -24,9 +24,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url(svg/background.svg);
+  background-image: url(svg/intro.svg);
   background-size: cover;
-  display: none;
 }
 
 #game_over {
@@ -37,7 +36,6 @@
   left: 0;
   background-image: url(svg/gameover.svg);
   background-size: cover;
-  display: none;
 }
 
 #level_complete {
@@ -48,6 +46,9 @@
   left: 0;
   background-image: url(svg/victory.svg);
   background-size: cover;
+}
+
+.hide {
   display: none;
 }
 
