@@ -59,7 +59,7 @@ function startGame() {
 }
 
 function clickPoop() {
-  console.log("clickPoop");
+  console.log("clickPoop", this);
 
   this.removeEventListener("mousedown", clickPoop);
 
@@ -73,11 +73,12 @@ function clickPoop() {
   this.firstElementChild.classList.add("disappear_good");
 
   //reset poop after animation end
-  this.firstElementChild.addEventListener("animationend", poopClickReset);
+  this.addEventListener("animationend", poopClickReset);
 }
 
 function poopClickReset() {
-  //console.log("clickPoopReset");
+  console.log("clickPoopReset", this);
+
   this.classList.remove("freeze");
   this.firstElementChild.classList.remove("disappear_good");
 
@@ -85,7 +86,7 @@ function poopClickReset() {
   this.classList = "";
   this.offsetLeft;
   this.classList.add("pos" + rng(9), "fallGood");
-  this.firstElementChild.addEventListener("mousedown", clickPoop);
+  this.addEventListener("mousedown", clickPoop);
 }
 
 function poopFallReset() {
@@ -111,10 +112,10 @@ function clickSeed() {
 
   //seed disappear animation
   this.classList.add("freeze");
-  document.querySelector("#seed_sprite1").classList.add("disappear_bad");
+  this.firstElementChild.classList.add("disappear_bad");
 
   //reset seed after animation end
-  this.firstElementChild.addEventListener("animationend", seedReset);
+  this.addEventListener("animationend", seedReset);
 }
 
 function seedReset() {
@@ -156,8 +157,10 @@ function stopGame() {
     .querySelector("#time_container")
     .removeEventListener("animationend", stopGame);
 
-  this.classList = "";
-  this.firstElementChild.classList = "";
+  poop1.classList = "";
+  poop2.classList = "";
+  seed1.classList = "";
+  seed2.classList = "";
 
   poop1.removeEventListener("mousedown", clickPoop);
   poop1.removeEventListener("animationiteration", poopClickReset);
@@ -176,7 +179,7 @@ function stopGame() {
   //which end screen?
   if (lives <= 0) {
     gameOver();
-  } else if (points >= 10) {
+  } else if (points >= 20) {
     levelComplete();
   } else {
     gameOver();
