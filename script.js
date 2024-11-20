@@ -8,7 +8,6 @@ function rng(max) {
 
 const poop1 = document.querySelector("#poop_container1");
 const poop2 = document.querySelector("#poop_container2");
-
 const seed1 = document.querySelector("#seed_container1");
 const seed2 = document.querySelector("#seed_container2");
 
@@ -80,7 +79,15 @@ function clickPoop() {
   //add points on poop click
   points++;
   document.querySelector("#points").innerHTML = points;
-  // play sound
+
+  //play sound
+  if (Math.random() < 0.5) {
+    document.querySelector("#fart1").volume = 0.5;
+    document.querySelector("#fart1").play();
+  } else {
+    document.querySelector("#fart2").volume = 0.5;
+    document.querySelector("#fart2").play();
+  }
 
   //poop disappear animation
   this.classList.add("freeze");
@@ -122,7 +129,10 @@ function clickSeed() {
   //subtract point if seed is clicked
   points--;
   document.querySelector("#points").innerHTML = points;
+
   //play sound
+  document.querySelector("#pip").volume = 0.5;
+  document.querySelector("#pip").play();
 
   //seed disappear animation
   this.classList.add("freeze");
